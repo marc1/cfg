@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 ######## Directory Setup ########
 
@@ -20,4 +20,4 @@ nix-build https://github.com/LnL7/nix-darwin/archive/master.tar.gz -A installer
 ./result/bin/darwin-installer
 rm -r ./result
 
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+sh "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
