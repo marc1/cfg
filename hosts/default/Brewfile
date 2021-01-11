@@ -1,0 +1,29 @@
+# basics
+brew 'coreutils'
+brew 'git'
+brew 'stow'
+brew 'zsh'
+brew 'llvm'
+
+# nvim
+cask 'neovim-nightly'
+tap 'marc1/neovim-nightly'
+
+# wm + hk
+tap 'koekeishiya/formulae'
+brew 'yabai'
+brew 'skhd'
+
+# fonts
+tap 'marc1/apple-fonts'
+cask 'font-sf-mono'
+
+# casks
+tap 'homebrew/cask'
+cask 'iterm2'
+cask 'bitwarden'
+cask 'discord'
+
+# app store
+brew 'mas'
+mas 'AdGuard for Safari', id: 1440147259
