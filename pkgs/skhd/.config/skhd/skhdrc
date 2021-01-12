@@ -1,20 +1,20 @@
 # Open applications
-ralt - return:                  $HOME/cfg/scripts/open_terminal.sh
-ralt - 0x2A:                    open -na /Applications/Safari.app
+ralt - return :                  $HOME/cfg/scripts/open_terminal.sh
+ralt - 0x2A :                    open -na /Applications/Safari.app
 
 # Create and destroy spaces
-cmd + ralt - return:            yabai -m space --create; \
+cmd + ralt - return :            yabai -m space --create; \
                                 yabai -m space --focus last
-cmd + ralt - baskspace:         yabai -m --focus prev; \
+cmd + ralt - backspace :         yabai -m --focus prev; \
                                 yabai -m space recent --destroy
 
 # Switch spaces
-ctrl - left:                    yabai -m space --focus next; \
+ctrl - left :                    yabai -m space --focus next; \
                                 yabai -m window --focus recent
-ctrl - right:                   yabai -m space --focus prev; \
+ctrl - right :                   yabai -m space --focus prev; \
                                 yabai -m window --focus recent
 
 # Move spaces
-shift + ctrl - left:            yabai -m space --move next
-shift + ctrl - right:           yabai -m space --move prev
+shift + ctrl - left :            yabai -m space --move prev
+shift + ctrl - right :           yabai -m space --move next
 
