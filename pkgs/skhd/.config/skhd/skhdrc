@@ -1,6 +1,6 @@
 # Open applications
 ralt - return :                 $HOME/cfg/scripts/open_terminal.sh
-ralt - 0x2A :                   open -na /Applications/Safari.app
+ralt - 0x2A :                   $HOME/cfg/scripts/open_browser.sh
 
 # Create and destroy spaces
 cmd + ralt - return :           yabai -m space --create; \

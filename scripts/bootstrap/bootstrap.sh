@@ -20,3 +20,8 @@ printf "Setting preferences...\n"
 
 printf "Running yabai setup...\n"
 /bin/bash "$CFG/scripts/bootstrap/yabai.sh"
+
+chmod +x $CFG/bin/ok
+for s in $CFG/scripts/*.sh; do
+	chmod +x $s
+done
