@@ -18,3 +18,9 @@ ctrl - right :                  yabai -m space --focus next; \
 shift + ctrl - left :           yabai -m space --move prev
 shift + ctrl - right :          yabai -m space --move next
 
+# Change window focus
+shift + ctrl - h :		yabai -m window --focus west
+shift + ctrl - j :		yabai -m window --focus south
+shift + ctrl - k :		yabai -m window --focus north
+shift + ctrl - l :		yabai -m window --focus east
+

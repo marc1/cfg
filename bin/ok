@@ -12,22 +12,9 @@ function main {
         echo
         echo "Available commands:"
         echo "      bundle (b)              Operate on the brew bundle"
-        echo "      install (i)             Installs"
+        echo "      go			    Navigate to the cfg repository"
         echo "      link (l)                Link all packages listed in the host's 'pkglist'"
         echo "      unlink (ul, u)          Unlink all packages"
-    }
-
-    function _install  {
-        command -v "brew" >/dev/null
-        [[ $? -ne 0 ]] && _err "brew not installed. Exiting..." && exit 1
-
-        pushd $CFG/pkgs >/dev/null
-        brew bundle --no-lock install
-        stow --target=$HOME stow
-        for file in ./*/; do
-            stow file 
-        done
-        popd >/dev/null
     }
 
     cmd="$1"
@@ -42,17 +29,34 @@ function main {
             brew bundle --no-lock "$@"
             popd >/dev/null
             ;;
-        install|i)
-            _install
-            ;;
+	go)
+	    cd $CFG
+	    $SHELL
+	    ;;
         link|l)
             command -v "stow" >/dev/null
             [[ $? -ne 0 ]] && _err "stow not installed. Exiting..." && exit 1
+            
+	    [[ ! -f $HOME/.stowrc ]] && pushd $CFG/pkgs >/dev/null && stow --target=$HOME stow $$ popd >/dev/null
+	    
+            pushd $CFG/pkgs >/dev/null
+	    for d in ./*/; do
+		stow "$(basename $d)"
+	    done
+	    popd >/dev/null
 
             ;;
         unlink|ul|u)
             command -v "stow" >/dev/null
             [[ $? -ne 0 ]] && _err "stow not installed. Exiting..." && exit 1
+
+            pushd $CFG/pkgs >/dev/null
+	    for d in ./*/; do
+		local base = "$(basename $d)"
+		[[ $base == "stow" ]] && continue;
+		stow -D $base
+	    done
+	    popd >/dev/null
             ;;
         "") _usage ;;
         help|h|-h|--help) _usage ;;
