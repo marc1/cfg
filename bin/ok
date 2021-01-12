@@ -1,0 +1,68 @@
+#!/usr/bin/env bash
+
+function main {
+    function _err {
+        echo "ERR: $@"
+    }
+
+    [[ ! -d "$CFG" ]] && _err "\$CFG invalid! Exiting..." && exit 1
+
+    function _usage {
+        echo "Usage: ok COMMAND [FLAGS...] [ARGS...]"
+        echo
+        echo "Available commands:"
+        echo "      bundle (b)              Operate on the brew bundle"
+        echo "      install (i)             Installs"
+        echo "      link (l)                Link all packages listed in the host's 'pkglist'"
+        echo "      unlink (ul, u)          Unlink all packages"
+    }
+
+    function _install  {
+        command -v "brew" >/dev/null
+        [[ $? -ne 0 ]] && _err "brew not installed. Exiting..." && exit 1
+
+        command -v "stow" >/dev/null
+        [[ $? -ne 0 ]] && _err "stow not installed. Exiting..." && exit 1
+
+        pushd $CFG/pkgs >/dev/null
+        brew bundle --no-lock "$@"
+        stow --target=$HOME stow
+        for file in ./*/; do
+            stow file 
+        done
+        popd >/dev/null
+    }
+
+    cmd="$1"
+    [[ $# -gt 0 ]] && shift
+
+    case "$cmd" in
+        bundle|b)
+            command -v "brew" >/dev/null
+            [[ $? -ne 0 ]] && _err "brew not installed. Exiting..." && exit 1
+            
+            pushd $CFG/pkgs >/dev/null
+            brew bundle --no-lock "$@"
+            popd >/dev/null
+            ;;
+        install|i)
+            _install
+            ;;
+        link|l)
+            command -v "stow" >/dev/null
+            [[ $? -ne 0 ]] && _err "stow not installed. Exiting..." && exit 1
+
+            ;;
+        unlink|ul|u)
+            command -v "stow" >/dev/null
+            [[ $? -ne 0 ]] && _err "stow not installed. Exiting..." && exit 1
+            ;;
+        "") _usage ;;
+        help|h|-h|--help) _usage ;;
+        *) _err "Couldn't find command: $cmd"
+            exit 1
+            ;;
+    esac
+}
+
+main "$@"
