@@ -21,11 +21,8 @@ function main {
         command -v "brew" >/dev/null
         [[ $? -ne 0 ]] && _err "brew not installed. Exiting..." && exit 1
 
-        command -v "stow" >/dev/null
-        [[ $? -ne 0 ]] && _err "stow not installed. Exiting..." && exit 1
-
         pushd $CFG/pkgs >/dev/null
-        brew bundle --no-lock "$@"
+        brew bundle --no-lock install
         stow --target=$HOME stow
         for file in ./*/; do
             stow file 
