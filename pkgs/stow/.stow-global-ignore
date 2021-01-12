@@ -1,0 +1,11 @@
+\.DS_Store
+\.git
+\.gitignore
+\.stow-local-ignore
+^/README.*
+^/LICENSE.*
+README.md
+_.*
+^/@.*
+.*.lock.*
+Brewfile

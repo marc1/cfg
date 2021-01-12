@@ -1,0 +1,15 @@
+[user]
+    name = marc
+    email = m@marc.rs
+    username = marc1
+[alias]
+    a = add
+    b = branch
+    c = commit
+    cl = clone
+    ps = push
+    pl = pull
+    rao = remote add origin
+    rro = remote remove origin
+    s = status
+

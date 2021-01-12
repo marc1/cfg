@@ -1,0 +1,79 @@
+set hidden
+set incsearch
+set ratios 2:5:5
+
+# clear old mappings
+map e
+map d
+map <space>
+map w
+map r
+map m
+
+map ; read
+map <c-r> reload
+
+map } half-down
+map { half-up
+
+map gg top
+map G bottom
+
+map h updir
+map j down
+map k up
+map l open
+
+map <enter> $$EDITOR $f
+map o open
+
+map y copy
+map x cut
+map p paste
+map dd delete
+map <space> toggle
+
+map @ push :cd<space>
+
+cmd rename_append %{{
+    lf -remote "send $id push :rename<enter>"
+}}
+
+cmd rename_start %{{
+    lf -remote "send $id push :rename<enter><c-a>"
+}}
+
+cmd rename_before_ext %{{
+    lf -remote "send $id push :rename<enter><a-b><left>"    
+}}
+
+cmd rename_eq_ext %{{
+    lf -remote "send $id push :rename<enter><a-b><left><c-u>"    
+}}
+
+cmd rename_eq %{{
+    lf -remote "send $id push :rename<enter><c-u>"
+}}
+
+map r$ rename_append
+map r0 rename_start
+map r= rename_eq
+map r- rename_before_ext
+map r_ rename_eq_ext
+
+cmd mkdir %{{
+    printf "dirname: "
+    read ans
+    mkdir -p $ans
+}}
+
+cmd mkfile %{{
+    printf "filename: "
+    read ans
+    touch $ans
+}}
+
+map ms mark-save
+map md mkdir
+map mf mkfile
+
