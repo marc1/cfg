@@ -10,9 +10,9 @@ cmd + ralt - backspace :        yabai -m --focus prev; \
 
 # Switch spaces
 ctrl - left :                   yabai -m space --focus prev; \
-                                yabai -m window --focus recent
+                                yabai -m window --focus first
 ctrl - right :                  yabai -m space --focus next; \
-                                yabai -m window --focus recent
+                                yabai -m window --focus first
 
 # Move spaces
 shift + ctrl - left :           yabai -m space --move prev

@@ -1,10 +1,5 @@
 #!/usr/bin/env bash
 
-if [[ $# -ne 0 ]]; then
-    echo "ERR: no hostname specified! exiting..."
-    exit 1
-fi
-
 HOSTNAME="$1"
 [[ $# -gt 0 ]] && shift
 
@@ -18,7 +13,7 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 # HOSTNAME
 sudo scutil --set ComputerName $HOSTNAME
 sudo scutil --set HostName $HOSTNAME
-sudo scutil --set LostHostName $HOSTNAME
+sudo scutil --set LocalHostName $HOSTNAME
 
 # GREEN HIGHLIGHT
 defaults write NSGlobalDomain AppleHighlightColor -string "0.85 0.93 0.87"
@@ -58,7 +53,7 @@ defaults write NSGlobalDomain com.apple.keyboard.fnState -bool true
 defaults write NSGlobalDomain com.apple.keyboard.fnState -bool true
 defaults write NSGlobalDomain com.apple.springing.delay -float 0.0
 defaults write NSGlobalDomain com.apple.springing.enabled -bool true 
-defaults write NSGlobalDomain com.apple.sipwscrolldirection -bool false 
+defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false 
 defaults write NSGlobalDomain com.apple.trackpad.scaling -int -1
 defaults write NSGlobalDomain com.apple.mouse.scaling -int -1
 
@@ -66,7 +61,7 @@ defaults write NSGlobalDomain com.apple.mouse.scaling -int -1
 defaults write com.apple.dock autohide -bool true
 defaults write com.apple.dock autohide-delay -float 0
 defaults write com.apple.dock autohide-time-modifier -float 0.5
-defaults write com.apple.dock dashboard-in-overlay -bool true
+defaults write com.apple.dock dashboard-in-overlay -bool false
 defaults write com.apple.dock expose-animation-duration -float 0.0
 defaults write com.apple.dock expose-group-by-app -bool false
 defaults write com.apple.dock launchanim -bool false
