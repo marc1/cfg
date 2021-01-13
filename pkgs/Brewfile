@@ -16,6 +16,8 @@ brew 'skhd'
 
 # misc
 brew 'lf'
+brew 'rustup'
+brew 'rust-analyzer'
 
 # fonts
 tap 'marc1/apple-fonts'

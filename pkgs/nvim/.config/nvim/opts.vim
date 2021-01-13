@@ -25,5 +25,11 @@ set undodir=~/.local/share/nvim/undo
 set number
 set relativenumber
 
+set t_Co=256
+set termguicolors
 set background=dark
-colorscheme gruvbox
+colorscheme sitruuna-blue
+
+let g:lightline = {
+      \ 'colorscheme': 'sitruuna',
+      \ }
