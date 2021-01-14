@@ -18,17 +18,17 @@ brew 'skhd'
 brew 'lf'
 brew 'rustup'
 brew 'rust-analyzer'
+brew 'rg'
+brew 'fzf'
+brew 'fd'
 
 # fonts
 tap 'marc1/apple-fonts'
 cask 'font-sf-mono'
 
-# casks
 tap 'homebrew/cask'
+cask 'basictex'
 cask 'iterm2'
 cask 'bitwarden'
 cask 'discord'
-
-# app store
-brew 'mas'
-mas 'AdGuard for Safari', id: 1440147259
+cask 'zoom'

@@ -1,3 +1,3 @@
-export PROMPT='%F{white}%n@%m%F{reset}> '
+export PROMPT='%F{yellow}%n@%m%F{reset}> '
 export RPROMPT='%F{white}%~%F{reset}'
 
