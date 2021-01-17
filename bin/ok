@@ -37,7 +37,7 @@ function main {
             command -v "stow" >/dev/null
             [[ $? -ne 0 ]] && _err "stow not installed. Exiting..." && exit 1
             
-	    [[ ! -f $HOME/.stowrc ]] && pushd $CFG/pkgs >/dev/null && stow --target=$HOME stow $$ popd >/dev/null
+	    [[ ! -f $HOME/.stowrc ]] && pushd $CFG/pkgs >/dev/null && stow --target=$HOME stow && popd >/dev/null
 	    
             pushd $CFG/pkgs >/dev/null
 	    for d in ./*/; do
@@ -51,11 +51,13 @@ function main {
             [[ $? -ne 0 ]] && _err "stow not installed. Exiting..." && exit 1
 
             pushd $CFG/pkgs >/dev/null
-	    for d in ./*/; do
-		local base = "$(basename $d)"
+	    for d in */; do
+		local base="$(basename $d)"
 		[[ $base == "stow" ]] && continue;
 		stow -D $base
 	    done
+
+	    stow -D stow
 	    popd >/dev/null
             ;;
         "") _usage ;;
