@@ -18,6 +18,7 @@ call plug#begin(stdpath('data') . '/plugs')
     Plug 'nvim-lua/completion-nvim'
 
     Plug 'rust-lang/rust.vim'
+    "Plug 'lervag/vimtex'
 call plug#end()
 
 if vim_plug_installed
